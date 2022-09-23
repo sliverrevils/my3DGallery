@@ -8,11 +8,20 @@ import Authification from "../components/Authification";
 import ViewItem from "../components/Items/ViewItem";
 import TestPage from "../pages/testPage";
 import ViewItem2 from "../components/Items/ViewItem2";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function RouteControl() {
   const authRef=useRef(getAuth());
   const [user]=useAuthState(authRef.current);
 
+  const {case:basket}=useSelector(({basket})=>basket)
+  useEffect(()=>{
+    if(basket){
+      console.log('BASKET SAVE',basket);
+      localStorage.setItem('basket',JSON.stringify(basket))
+    }
+  },[basket])
 
  
   return (

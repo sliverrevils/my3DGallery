@@ -9,16 +9,16 @@ import { fireApp } from "../../firebase/firebase";
 import { useBasketBtn } from "../../hooks/hooks";
 
 
-export default function Item({id,pic,about,name}){
+export default function Item({id,pic,about,name,date}){
     
     const [user]=useAuthState(getAuth());
     const {basketBtn}=useBasketBtn(id);
   
     const onDelDoc=async()=>{        
-        const res=window.confirm('Delete item ⁉️');
+        const res=window.confirm(`Delete item : ${name||id} ⁉️`);
         if(res){
-        await deleteDoc(doc(getFirestore(fireApp),'furniture',id));
-        alert(`${id} - was deleted ! ❌`);
+        await deleteDoc(doc(getFirestore(fireApp),'models',id));
+        console.log(`${id} - was deleted ! ❌`);
         }        
     }
 
@@ -33,8 +33,7 @@ export default function Item({id,pic,about,name}){
     }
 
     const showAbout=useCallback(()=>{
-        if(about.length>50){
-            console.log('BIG');
+        if(about?.length>50){          
             return about.substr(0,100)+'...'
         }
         return about;
@@ -61,8 +60,8 @@ export default function Item({id,pic,about,name}){
         </div>                  
             <Link to={`/item/${id}`} ><img className={"Item__img"} src={img} alt='img' /></Link>            
             <span className={"Item__name"}>{name}</span>
-            <p className={"Item__about"}><b>About:</b> <i>{showAbout()}</i></p>
-            
+            {about&&<p className={"Item__about"}><b>About:</b> <i>{showAbout()}</i></p>}
+            <div className={"Item__date"}>{new Date(date).toLocaleString()}</div>
         </article>
     )
 }

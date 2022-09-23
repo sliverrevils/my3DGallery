@@ -16,7 +16,7 @@ export default function ViewItem2() {
 
     const basket = useSelector(state=>state.basket.case);
     const { itemId } = useParams();
-    const [value, loading, error] = useDocumentData(doc(getFirestore(fireApp), 'furniture', itemId));
+    const [value, loading, error] = useDocumentData(doc(getFirestore(fireApp), 'models', itemId));
 
     const { basketBtn } = useBasketBtn(itemId)
 

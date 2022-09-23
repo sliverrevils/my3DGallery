@@ -2,7 +2,7 @@
 import {addDoc, collection, getFirestore} from 'firebase/firestore';
 import { useRef } from 'react';
 import { fireApp } from '../../firebase/firebase';
-import furSet from '../../furSet.json';
+import appSet from '../../appSet.json';
 
 export default function AddItem({showAddToggle}){
     const name=useRef();
@@ -19,7 +19,7 @@ export default function AddItem({showAddToggle}){
             alert('Enter name');
             return;
         }
-        addDoc(collection(getFirestore(fireApp),'furniture'),{
+        addDoc(collection(getFirestore(fireApp),'models'),{
             name:name.current.value,
             pic:pic.current.value||null,
             model:model.current.value||null,
@@ -27,6 +27,7 @@ export default function AddItem({showAddToggle}){
             price:price.current.value||null,
             categories:categories.current.value||null,
             transformations:transformations.current.value||null,
+            date:Date.now()
 
 
         });
@@ -48,8 +49,8 @@ export default function AddItem({showAddToggle}){
                 <input type={'text'} placeholder='pic src' ref={pic}/>                  
                 <input type={'url'} placeholder='3D-Model link' ref={model}/>  
                 <input type={'number'} placeholder='price' ref={price}/>   
-                <select ref={categories} >{furSet.props.categories.map(el=><option key={el+Date.now()}>{el}</option>) }</select>    
-                <select ref={transformations}>{furSet.props.transformations.map(el=><option key={el+Date.now()} >{el}</option>)}</select>        
+                <select ref={categories} >{appSet.props.categories.map(el=><option key={el+Date.now()}>{el}</option>) }</select>    
+                <select ref={transformations}>{appSet.props.transformations.map(el=><option key={el+Date.now()} >{el}</option>)}</select>        
                 <textarea placeholder="about" ref={about}/>
                 <button onClick={addItem} >Add item</button>
         </div>

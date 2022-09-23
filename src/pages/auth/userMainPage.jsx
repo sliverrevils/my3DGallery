@@ -10,7 +10,7 @@ export default function UserMainPage() {
     const showAddToggle = () => setShowAdd(state => !state);
     return (
         <div>
-            <h1>Main Page</h1>
+            <h1 style={{textAlign:'center'}}>List control</h1>
             {showAdd ? <AddItem {...{ showAddToggle }} /> : <button onClick={showAddToggle}>
                 <span className="material-icons">control_point</span>
             </button>}

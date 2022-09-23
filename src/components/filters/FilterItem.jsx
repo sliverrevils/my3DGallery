@@ -2,7 +2,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addFilter } from "../../redux/filterSlice";
-import furSet from '../../furSet.json';
+import furSet from '../../appSet.json';
 
 export default function FilterItem({name,index}){
     

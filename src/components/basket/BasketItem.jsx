@@ -8,7 +8,7 @@ import { itemBasketToggle } from "../../redux/basketSlice";
 
 export default function BasketItem({id}){
     const dispatch=useDispatch();    
-    const [data,loading,error]=useDocumentData(doc(getFirestore(fireApp),'furniture',id));
+    const [data,loading,error]=useDocumentData(doc(getFirestore(fireApp),'models',id));
     
     const onDelItem=(event)=>{
         event.preventDefault();

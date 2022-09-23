@@ -16,7 +16,7 @@ import { addToBasket, itemBasketToggle } from '../../redux/basketSlice';
 import { useBasketBtn } from '../../hooks/hooks';
 
 
-import myLight from '../../models/light/light.gltf';
+//import myLight from '../../models/light/light.gltf';
 
 
 
@@ -78,15 +78,15 @@ export default function ViewItem() {
         //scene.add(new THREE.GridHelper(10, 10));
 
         //loader
-        const loader = new GLTFLoader();
-        loader.load(myLight, (gltf) => {
-            scene.add(gltf.scene);
-            const model = gltf.scene.children[0];
-            console.log('MODEL', gltf.scene.children[0]);
-            model.position.set(0, 0, 0);
-            model.scale.set(0, 0, 0);
-            render();
-        })
+        // const loader = new GLTFLoader();
+        // loader.load(myLight, (gltf) => {
+        //     scene.add(gltf.scene);
+        //     const model = gltf.scene.children[0];
+        //     console.log('MODEL', gltf.scene.children[0]);
+        //     model.position.set(0, 0, 0);
+        //     model.scale.set(0, 0, 0);
+        //     render();
+        // })
         //render();
 
         //render
